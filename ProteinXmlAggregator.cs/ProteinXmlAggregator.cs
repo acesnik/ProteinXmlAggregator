@@ -1,15 +1,13 @@
-﻿using System;
+﻿using Proteomics;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.IO;
-using Proteomics;
+using System.Linq;
 using UsefulProteomicsDatabases;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ProteinXmlAggregator.cs
+namespace ProteinXmlAggregator
 {
-    class Program
+    public class ProteinXmlAggregator
     {
         static void Main(string[] args)
         {
@@ -19,69 +17,66 @@ namespace ProteinXmlAggregator.cs
                 Console.WriteLine("Please enter at least two protein .xml or .xml.gz databases.");
                 return;
             }
-            List<Protein> databases = files.SelectMany(f => ProteinDbLoader.LoadProteinXML(f, false, new List<Modification>(), false, new List<string>(), out Dictionary<string, Modification> un)).ToList();
-            Dictionary<string, List<Protein>> proteinsByAcc = new Dictionary<string, List<Protein>>();
-            foreach (Protein p in databases)
-            {
-                if (!proteinsByAcc.TryGetValue(p.Accession, out List<Protein> proteins)) proteinsByAcc.Add(p.Accession, new List<Protein> { p });
-                else proteins.Add(p);
-            }
-            List<Protein>
+            List<Protein> merged = merge_proteins(files.SelectMany(f => ProteinDbLoader.LoadProteinXML(f, false, new List<Modification>(), false, new List<string>(), out Dictionary<string, Modification> un))).ToList();
+            ProteinDbWriter.WriteXmlDatabase(null, merged, Path.Combine(Path.GetDirectoryName(files.First()), "new_database_" + DateTime.Now.Month + DateTime.Now.Date + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + ".xml"));
         }
 
-        public List<Protein> merge_proteins(KeyValuePair<string, List<Protein>> merge_these)
+        /// <summary>
+        /// Merges proteins of the same accession and sequence. Considers contaminants separately.
+        /// </summary>
+        /// <param name="merge_these"></param>
+        /// <returns></returns>
+        public static IEnumerable<Protein> merge_proteins(IEnumerable<Protein> merge_these)
         {
-            Dictionary<string, List<Protein>> proteinsBySequence = new Dictionary<string, List<Protein>>();
-            foreach (Protein p in merge_these.Value)
+            Dictionary<Tuple<string, string, bool, bool>, List<Protein>> proteins_by_accession_seq_cont_isdecoy = new Dictionary<Tuple<string, string, bool, bool>, List<Protein>>();
+            foreach (Protein p in merge_these)
             {
-                if (!proteinsBySequence.TryGetValue(p.Accession, out List<Protein> asdf)) proteinsBySequence.Add(p.BaseSequence, new List<Protein> { p });
-                else asdf.Add(p);
+                Tuple<string, string, bool, bool> key = new Tuple<string, string, bool, bool>(p.Accession, p.BaseSequence, p.IsContaminant, p.IsDecoy);
+                if (!proteins_by_accession_seq_cont_isdecoy.TryGetValue(key, out List<Protein> bundled))
+                    proteins_by_accession_seq_cont_isdecoy.Add(key, new List<Protein> { p });
+                else
+                    bundled.Add(p);
             }
 
-            foreach (KeyValuePair<string, List<Protein>> proteins in proteinsBySequence)
+            foreach (KeyValuePair<Tuple<string, string, bool, bool>, List<Protein>> proteins in proteins_by_accession_seq_cont_isdecoy)
             {
                 HashSet<string> names = new HashSet<string>(proteins.Value.Select(p => p.Name));
                 HashSet<string> fullnames = new HashSet<string>(proteins.Value.Select(p => p.FullName));
                 HashSet<string> descriptions = new HashSet<string>(proteins.Value.Select(p => p.FullDescription));
-                // all marked as target
-                // all marked as not contaminants
                 HashSet<Tuple<string, string>> genenames = new HashSet<Tuple<string, string>>(proteins.Value.SelectMany(p => p.GeneNames));
                 HashSet<ProteolysisProduct> proteolysis = new HashSet<ProteolysisProduct>(proteins.Value.SelectMany(p => p.ProteolysisProducts));
                 HashSet<SequenceVariation> variants = new HashSet<SequenceVariation>(proteins.Value.SelectMany(p => p.SequenceVariations));
                 HashSet<DatabaseReference> references = new HashSet<DatabaseReference>(proteins.Value.SelectMany(p => p.DatabaseReferences));
                 HashSet<DisulfideBond> bonds = new HashSet<DisulfideBond>(proteins.Value.SelectMany(p => p.DisulfideBonds));
-                yield return new Protein(
-                    proteins.Key, 
-                    merge_these.Key, 
-                    gene_names : genenames.ToList(), 
-                    oneBasedModifications : GetModificationDict(proteins.Value.Select(p => p.OneBasedPossibleLocalizedModifications)),
-                    proteolysisProducts : proteolysis.ToList(),
-                    name : names.FirstOrDefault(),
-                    full_name : fullnames.FirstOrDefault(),
-                    databaseReferences : references.ToList(),
-                    disulfideBonds : bonds.ToList(),
-                    sequenceVariations : variants.ToList()
-            }
-        }
 
-        private static IDictionary<int, List<Modification>> GetModificationDict(IEnumerable<IDictionary<int, List<Modification>>> mods)
-        {
-            var mod_dict = new Dictionary<int, HashSet<Modification>>();
-            foreach (KeyValuePair<int, List<Modification>> nice in mods.SelectMany(x => x).ToList())
-            {
-                if (!mod_dict.TryGetValue(nice.Key, out HashSet<Modification> val))
+                Dictionary<int, List<Modification>> mod_dict = new Dictionary<int, List<Modification>>();
+                foreach (KeyValuePair<int, List<Modification>> nice in proteins.Value.SelectMany(p => p.OneBasedPossibleLocalizedModifications).ToList())
                 {
-                    mod_dict.Add(nice.Key, new HashSet<Modification>(nice.Value));
+                    if (!mod_dict.TryGetValue(nice.Key, out List<Modification> val))
+                        mod_dict.Add(nice.Key, new List<Modification>(nice.Value));
+                    else
+                        foreach (Modification mod in nice.Value)
+                        {
+                            if (!val.Any(m => m.Equals(mod)))
+                                val.Add(mod); // consider modification mass, which isn't hashed
+                        }
                 }
-                else
-                {
-                    foreach (Modification mod in val)
-                    {
-                        val.Add(mod);
-                    }
-                }
+
+                yield return new Protein(
+                    proteins.Key.Item2,
+                    proteins.Key.Item1,
+                    isContaminant : proteins.Key.Item3,
+                    isDecoy : proteins.Key.Item4,
+                    gene_names: genenames.ToList(),
+                    oneBasedModifications: mod_dict,
+                    proteolysisProducts: proteolysis.ToList(),
+                    name: names.FirstOrDefault(),
+                    full_name: fullnames.FirstOrDefault(),
+                    databaseReferences: references.ToList(),
+                    disulfideBonds: bonds.ToList(),
+                    sequenceVariations: variants.ToList()
+                    );
             }
-            return mod_dict.ToDictionary(kv => kv.Key, kv => kv.Value.ToList());
         }
     }
 }

@@ -1,0 +1,41 @@
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\bin\x64\Debug\ProteinXmlAggregator.exe.config
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\bin\x64\Debug\ProteinXmlAggregator.exe
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\bin\x64\Debug\ProteinXmlAggregator.pdb
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\bin\x64\Debug\Chemistry.dll
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\bin\x64\Debug\ManagedThermoHelperLayer.dll
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\bin\x64\Debug\MassSpectrometry.dll
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\bin\x64\Debug\MathNet.Numerics.dll
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\bin\x64\Debug\mzIdentML.dll
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\bin\x64\Debug\MzLibUtil.dll
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\bin\x64\Debug\MzML.dll
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\bin\x64\Debug\pepXML.dll
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\bin\x64\Debug\Proteomics.dll
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\bin\x64\Debug\Spectra.dll
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\bin\x64\Debug\Thermo.dll
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\bin\x64\Debug\UsefulProteomicsDatabases.dll
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\bin\x64\Debug\Zlib.Portable.dll
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\bin\x64\Debug\MathNet.Numerics.xml
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\bin\x64\Debug\Zlib.Portable.xml
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\obj\x64\Debug\ProteinXmlAggregator.csprojResolveAssemblyReference.cache
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\obj\x64\Debug\ProteinXmlAggregator.exe
+C:\Users\antho\Documents\Visual Studio 2017\Projects\ProteinXmlAggregator.cs\ProteinXmlAggregator.cs\obj\x64\Debug\ProteinXmlAggregator.pdb
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\bin\x64\Debug\ProteinXmlAggregator.exe.config
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\bin\x64\Debug\ProteinXmlAggregator.exe
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\bin\x64\Debug\ProteinXmlAggregator.pdb
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\bin\x64\Debug\Chemistry.dll
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\bin\x64\Debug\ManagedThermoHelperLayer.dll
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\bin\x64\Debug\MassSpectrometry.dll
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\bin\x64\Debug\MathNet.Numerics.dll
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\bin\x64\Debug\mzIdentML.dll
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\bin\x64\Debug\MzLibUtil.dll
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\bin\x64\Debug\MzML.dll
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\bin\x64\Debug\pepXML.dll
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\bin\x64\Debug\Proteomics.dll
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\bin\x64\Debug\Spectra.dll
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\bin\x64\Debug\Thermo.dll
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\bin\x64\Debug\UsefulProteomicsDatabases.dll
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\bin\x64\Debug\Zlib.Portable.dll
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\bin\x64\Debug\MathNet.Numerics.xml
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\bin\x64\Debug\Zlib.Portable.xml
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\obj\x64\Debug\ProteinXmlAggregator.exe
+C:\Users\antho\Documents\GitHub\ProteinXmlAggregator\ProteinXmlAggregator.cs\obj\x64\Debug\ProteinXmlAggregator.pdb
