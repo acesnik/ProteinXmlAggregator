@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProteinXmlAggregator", "ProteinXmlAggregator.cs\ProteinXmlAggregator.csproj", "{9121D5EA-6B93-42AC-9908-41F07B96CBA5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProteinXmlAggregator", "ProteinXmlAggregator\ProteinXmlAggregator.csproj", "{9121D5EA-6B93-42AC-9908-41F07B96CBA5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{28560DFF-53EE-472E-A02D-879AE33882A4}"
 EndProject

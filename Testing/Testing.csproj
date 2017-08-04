@@ -16,7 +16,7 @@
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -101,7 +101,7 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProteinXmlAggregator.cs\ProteinXmlAggregator.csproj">
+    <ProjectReference Include="..\ProteinXmlAggregator\ProteinXmlAggregator.csproj">
       <Project>{9121d5ea-6b93-42ac-9908-41f07b96cba5}</Project>
       <Name>ProteinXmlAggregator</Name>
     </ProjectReference>

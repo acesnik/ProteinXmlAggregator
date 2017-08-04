@@ -42,13 +42,13 @@ namespace Test
                 oneBasedModifications: new Dictionary<int, List<Modification>> { { 1, new List<Modification> { new ModificationWithMass("mod2", new Tuple<string, string>("acc2", "acc2"), motif, TerminusLocalization.Any, 10, null, null, null, "type") } } }
                 );
 
-            List<Protein> merged = ProteinXmlAggregator.ProteinXmlAggregator.merge_proteins(new List<Protein> { p, p2 }).ToList();
+            List<Protein> merged = Aggregator.merge_proteins(new List<Protein> { p, p2 }).ToList();
             Assert.AreEqual(1, merged.Count);
             Assert.AreEqual(1, merged.First().DatabaseReferences.Count());
             Assert.AreEqual(1, merged.First().GeneNames.Count());
             Assert.AreEqual(1, merged.First().SequenceVariations.Count());
             Assert.AreEqual(1, merged.First().ProteolysisProducts.Count());
-            //Assert.AreNotEqual(p.OneBasedPossibleLocalizedModifications.First().Value.First().GetHashCode(), p2.OneBasedPossibleLocalizedModifications.First().Value.First().GetHashCode());
+            Assert.AreEqual(p.OneBasedPossibleLocalizedModifications.First().Value.First().GetHashCode(), p2.OneBasedPossibleLocalizedModifications.First().Value.First().GetHashCode());
             Assert.AreNotEqual(p.OneBasedPossibleLocalizedModifications.First().Value.First(), p2.OneBasedPossibleLocalizedModifications.First().Value.First());
             Assert.AreEqual(1, merged.First().OneBasedPossibleLocalizedModifications.Count());
             Assert.AreEqual(2, merged.First().OneBasedPossibleLocalizedModifications.First().Value.Count);
